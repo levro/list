@@ -2,11 +2,14 @@ package com.tasks3.linkedlist;
 
 public class LinkedList {
 	public LinkedList() {
-		//PUT YOUR CODE HERE
-		//PUT YOUR CODE HERE
+
 	}
 
 	public void add(Integer data) {
+		
+//		while (Next != null){
+			
+		}
                 //PUT YOUR CODE HERE
                 //PUT YOUR CODE HERE
 	}
@@ -25,13 +28,34 @@ public class LinkedList {
 	}
 
 	public int size() {
+		Node tmp = new Node();
+		
                 //PUT YOUR CODE HERE
                 //PUT YOUR CODE HERE
 		return 1;
 	}
 	
 	public static void main(String[] args) {
-//		for (int i=0; i<11; i++){
-		System.out.println(9);
+			
+		
+		Node c = new Node();
+		c.setData(63);
+		c.setNext(null);
+
+		Node b = new Node();
+		b.setData(10);
+		b.setNext(c);
+		
+		Node a = new Node();
+		a.setData(1);
+		a.setNext(b);
+		
+		System.out.println(a.getData());	
+		System.out.println(a.getNext());
+		System.out.println(b.getData());
+		System.out.println(b.getNext());
+		System.out.println(c.getData());
+		System.out.println(c.getNext());
+		System.out.println(a.getNext().getData());
 	}
 }   
