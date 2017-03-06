@@ -1,3 +1,5 @@
+package com.tasks3.linkedlist;
+
 public class LinkedList {
 	public LinkedList() {
 		//PUT YOUR CODE HERE
