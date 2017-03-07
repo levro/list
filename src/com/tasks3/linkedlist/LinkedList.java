@@ -1,16 +1,31 @@
 package com.tasks3.linkedlist;
 
 public class LinkedList {
-	public LinkedList() {
-
+	private Node first;
+//	private Node last;
+	private int size = 0;
+	
+	public LinkedList(int data) {
+		this.first = new Node();
+		this.first.setData(data);
+		this.size++;
 	}
 
 	public void add(Integer data) {
-		
-//		while (Next != null){
-			
+		Node node = new Node();
+		this.size++;
+		if (this.size == 0){
+			node = new Node();
+			node.setNext(node);
+			node.setData(data);
 		}
-                //PUT YOUR CODE HERE
+		else{
+			while (node.getNext() != null)
+				node = node.getNext();
+			node.setNext(new Node());
+			node.getNext().setData(data);
+		}	
+	            //PUT YOUR CODE HERE
                 //PUT YOUR CODE HERE
 	}
 
@@ -23,12 +38,10 @@ public class LinkedList {
 	public boolean delete(int index) {
                 //PUT YOUR CODE HERE
                 //PUT YOUR CODE HERE
-		boolean a = true;
-		return a;
+		return true;
 	}
 
 	public int size() {
-		Node tmp = new Node();
 		
                 //PUT YOUR CODE HERE
                 //PUT YOUR CODE HERE
@@ -37,7 +50,21 @@ public class LinkedList {
 	
 	public static void main(String[] args) {
 			
+		LinkedList lst = new LinkedList(30);
+		System.out.println(lst.size);
+		System.out.println(lst.first);
+		System.out.println(lst.first.getData());
+		System.out.println(lst.first.getNext());
 		
+		lst.add(100);
+		
+		System.out.println(lst.size);
+		System.out.println(lst.first);
+		System.out.println(lst.first.getData());
+		System.out.println(lst.first.getNext());
+		
+		
+		/*
 		Node c = new Node();
 		c.setData(63);
 		c.setNext(null);
@@ -56,6 +83,6 @@ public class LinkedList {
 		System.out.println(b.getNext());
 		System.out.println(c.getData());
 		System.out.println(c.getNext());
-		System.out.println(a.getNext().getData());
+		System.out.println(a.getNext().getData());*/
 	}
 }   
