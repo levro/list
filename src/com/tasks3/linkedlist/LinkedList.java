@@ -31,12 +31,12 @@ public class LinkedList {
 	}
 
 	public Integer get(int index) {
-		if (index >= size){
+		if (index >= size || index < 0 || size == 0){
 			return null;
 		}
 		else{
 			Node tmp = first;
-			for (int i = 0; i < index; i++){
+			for (int i = 0; i <= index-1; i++){
 				tmp = tmp.getNext();
 			}
 			return tmp.getData();			
@@ -44,9 +44,33 @@ public class LinkedList {
 	}
 
 	public boolean delete(int index) {
-                //PUT YOUR CODE HERE
-                //PUT YOUR CODE HERE
-		return true;
+		if (index >= size || index < 0 || size == 0){
+			return false;
+		}
+		else if (index == 0){
+			first = first.getNext();
+			size--;
+			return true;
+		}			
+		else if (index == size -1){
+			Node tmp = first;
+			for (int i = 0; i < index-1; i++){
+				tmp = tmp.getNext();
+			}
+			tmp.setNext(null);
+			last = tmp;
+			size--;
+			return true;
+		}
+		else {
+			Node tmp = first;
+			for (int i = 0; i < index-1; i++){
+				tmp = tmp.getNext();
+			}
+			tmp.setNext(tmp.getNext().getNext());
+			size--;
+			return true;			
+		}
 	}
 
 	public int size() {
@@ -54,13 +78,16 @@ public class LinkedList {
 	}
 	
 	public void prn() {
+		if (size > 0){
 			Node tmp = first;
-		for (int i = 0; i < size; i++){
+			
+			for (int i = 0; i < size; i++){
 			System.out.print(tmp.getData() + "; ");
-			tmp = tmp.getNext();
+			tmp = tmp.getNext();			
+			}			
+			System.out.println("First - " + first.getData() + ", last " + last.getData() + ", size - " + size + ".");
 		}
-//		System.out.println();
-		System.out.println("First - " + first.getData() + ", last " + last.getData() + ", size - " + size + ".");
+		else System.out.println("List is empty");
 	}
 	
 	public static void main(String[] args) {
@@ -72,7 +99,7 @@ public class LinkedList {
 		System.out.println("first - " + lst.first);
 		System.out.println("last - " + lst.last);
 		System.out.println("----------1----------");
-		
+		lst.add(1000);
 		lst.add(1001);
 		
 		lst.add(1002);
@@ -98,7 +125,18 @@ public class LinkedList {
 		lst.add(1007);
 		lst.add(1008);
 		lst.prn();
-		System.out.println(lst.get(5));
+		//System.out.println(lst.get(8));
+		lst.delete(8);
+		lst.delete(0);
+		lst.delete(3);
+		lst.delete(0);
+		lst.delete(0);
+		lst.delete(0);
+		lst.delete(0);
+		lst.delete(0);
+		lst.delete(0);
+		lst.add(999);
+		lst.prn();
 		//System.out.println(lst.first.getNext().getNext());
 				
 		
