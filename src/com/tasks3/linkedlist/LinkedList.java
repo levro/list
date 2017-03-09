@@ -2,29 +2,32 @@ package com.tasks3.linkedlist;
 
 public class LinkedList {
 	private Node first;
-//	private Node last;
+	private Node last;
 	private int size = 0;
 	
+	public LinkedList() {		
+	}
+	
 	public LinkedList(int data) {
-		this.first = new Node();
-		this.first.setData(data);
-		this.size++;
+		Node node = new Node();
+		first = node;
+		last = node;
+		first.setData(data);
+		size++;
 	}
 
 	public void add(Integer data) {
 		Node node = new Node();
-		this.size++;
-		if (this.size == 0){
-			node = new Node();
-			node.setNext(node);
-			node.setData(data);
+		node.setData(data);
+		if (this.size == 0){			
+			first = node;
+			last = node;			
 		}
 		else{
-			while (node.getNext() != null)
-				node = node.getNext();
-			node.setNext(new Node());
-			node.getNext().setData(data);
+			last.setNext(node);
+			last = node;
 		}	
+		this.size++;
 	            //PUT YOUR CODE HERE
                 //PUT YOUR CODE HERE
 	}
@@ -42,27 +45,56 @@ public class LinkedList {
 	}
 
 	public int size() {
-		
-                //PUT YOUR CODE HERE
-                //PUT YOUR CODE HERE
-		return 1;
+		return size;
+	}
+	
+	public void prn() {
+			Node tmp = first;
+		for (int i = 0; i < size; i++){
+			System.out.print(tmp.getData() + "; ");
+			tmp = tmp.getNext();
+		}
+//		System.out.println();
+		System.out.println("First - " + first.getData() + ", last " + last.getData() + ", size - " + size + ".");
 	}
 	
 	public static void main(String[] args) {
-			
-		LinkedList lst = new LinkedList(30);
-		System.out.println(lst.size);
-		System.out.println(lst.first);
-		System.out.println(lst.first.getData());
-		System.out.println(lst.first.getNext());
 		
-		lst.add(100);
+		LinkedList lst = new LinkedList();
+		//LinkedList lst = new LinkedList(1001);
+
+		System.out.println("size - " + lst.size);
+		System.out.println("first - " + lst.first);
+		System.out.println("last - " + lst.last);
+		System.out.println("----------1----------");
 		
-		System.out.println(lst.size);
-		System.out.println(lst.first);
-		System.out.println(lst.first.getData());
-		System.out.println(lst.first.getNext());
+		lst.add(1001);
 		
+		lst.add(1002);
+		System.out.println("size - " + lst.size);
+		System.out.println("first - " + lst.first);
+		System.out.println("last - " + lst.last);
+		System.out.println("firstData - " + lst.first.getData());
+		System.out.println("firstNext - " + lst.first.getNext());
+		
+		System.out.println("----------2----------");
+
+		lst.add(1003);
+		lst.add(1004);
+		
+		System.out.println("size - " + lst.size);
+		System.out.println("first - " + lst.first);
+		System.out.println("last - " + lst.last);
+		System.out.println("secondData - " + lst.first.getNext().getData());
+		System.out.println("thirdData - " + lst.first.getNext().getNext().getData());
+		System.out.println("fourthData - " + lst.first.getNext().getNext().getNext().getData());
+		lst.add(1005);
+		lst.add(1006);
+		lst.add(1007);
+		lst.add(1008);
+		lst.prn();
+		//System.out.println(lst.first.getNext().getNext());
+				
 		
 		/*
 		Node c = new Node();
