@@ -28,14 +28,19 @@ public class LinkedList {
 			last = node;
 		}	
 		this.size++;
-	            //PUT YOUR CODE HERE
-                //PUT YOUR CODE HERE
 	}
 
 	public Integer get(int index) {
-                //PUT YOUR CODE HERE
-                //PUT YOUR CODE HERE
-		return 1;
+		if (index >= size){
+			return null;
+		}
+		else{
+			Node tmp = first;
+			for (int i = 0; i < index; i++){
+				tmp = tmp.getNext();
+			}
+			return tmp.getData();			
+		}
 	}
 
 	public boolean delete(int index) {
@@ -93,6 +98,7 @@ public class LinkedList {
 		lst.add(1007);
 		lst.add(1008);
 		lst.prn();
+		System.out.println(lst.get(5));
 		//System.out.println(lst.first.getNext().getNext());
 				
 		
